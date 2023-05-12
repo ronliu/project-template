@@ -9,6 +9,7 @@ module.exports = {
     path: path.join(__dirname, '/dist'),
   },
   plugins: [
+    // bundle html files
     new HTMLWebpackPlugin({
       template: './client/index.html'
     })
