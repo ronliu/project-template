@@ -13,6 +13,15 @@ module.exports = {
       template: './client/index.html'
     })
   ],
+  devServer: {
+    static: {
+      publicPath: '/dist',
+      directory: path.join(__dirname, 'dist'),
+    },
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
+  },
   module: {
     rules: [
       {
