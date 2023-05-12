@@ -14,16 +14,19 @@ module.exports = {
     })
   ],
   devServer: {
+    // serve static files
     static: {
       publicPath: '/dist',
       directory: path.join(__dirname, 'dist'),
     },
+    // proxy for express server
     proxy: {
       '/api': 'http://localhost:3000'
     }
   },
   module: {
     rules: [
+      // babel loaders
       {
         test: /\.jsx?/, 
         exclude: /node_modules/,
@@ -34,6 +37,7 @@ module.exports = {
           }
         }
       },
+      // css loaders
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"]
