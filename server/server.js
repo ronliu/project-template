@@ -1,7 +1,15 @@
 const express = require('express');
-const path = require('path');
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
 const app = express();
+
+// assign constants
+const PORT = 3000;
+const mongoURI = '';
+
+// connect to mongo database
+if (mongoURI) mongoose.connect(mongoURI, { dbName: 'test'});
 
 // require routers
 const apiRouter = require('./routes/api.js');
@@ -9,6 +17,7 @@ const apiRouter = require('./routes/api.js');
 // parse request body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // route handlers
 app.use('/api', apiRouter);
@@ -19,9 +28,9 @@ app.use('*', (req, res) => {
 });
 
 // global error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res, next) => { /* eslint-disable-line */
   const defaultError = {
-    log: 'Express caught an unknown middleware error',
+    log: `Express caught an unknown middleware error: ${err}`,
     status: 500,
     message: 'Internal Server Error',
   };
@@ -33,7 +42,7 @@ app.use((err, req, res, next) => {
 });
 
 // start server
-app.listen(PORT=3000, () => {
+app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}!`);
 });
 
