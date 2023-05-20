@@ -1,4 +1,4 @@
-Template for a MERN project bundled with webpack.
+Template for a MERN project bundled with webpack!
 
 ### Setup
 - `npm install` to install dependencies
