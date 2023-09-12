@@ -1,4 +1,4 @@
-Template for a project on React, Node, Express, MongoDB bundled with webpack!
+Template for a project on React, Node, Express, and MongoDB bundled with webpack!
 
 ### Setup
 - `npm install` to install dependencies
